@@ -4,7 +4,7 @@ const BeatsSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
     likes: { type: Number, required: true },
-    artists: [{ type: String }], // There can be multiple artists
+    artists: [{ type: String, required: true }], // There can be multiple artists
     key: { type: String, required: true },
     bpm: { type: Number, required: true },
     price: { type: String, required: true },

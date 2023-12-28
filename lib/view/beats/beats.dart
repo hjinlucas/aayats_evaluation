@@ -25,7 +25,7 @@ class _BeatsState extends State<Beats> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return CircularProgressIndicator();
             } else if (snapshot.hasData) {
-              return buildBeatsTile(snapshot.data!);
+              return BeatsTile(snapshot.data!);
             } else if (snapshot.hasError) {
               return const Text("Something went wrong");
             } else {
@@ -35,7 +35,8 @@ class _BeatsState extends State<Beats> {
     );
   }
 
-  Widget buildBeatsTile(List<BeatsModel.Beats> beats) {
+  Widget BeatsTile(List<BeatsModel.Beats> beats) {
+    print(beats);
     return ListView.builder(
         itemCount: beats.length,
         itemBuilder: (context, index) {
