@@ -7,7 +7,7 @@ const {
 const beatsController = require("../controllers/beatsController");
 
 // GET ALL BEATS
-router.get("/", beatsController.getBeats);
+router.get("", beatsController.getBeats);
 
 // ADD SINGLE BEATS
 router.post("/add", beatsController.createBeats);

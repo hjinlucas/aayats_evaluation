@@ -2,7 +2,6 @@ import 'package:aayats_evaluation/common/services/beats_service.dart';
 import 'package:aayats_evaluation/common/text_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../common/widgets.dart';
 import 'package:aayats_evaluation/common/models/beats.dart' as BeatsModel;
 
@@ -19,7 +18,7 @@ class _BeatsState extends State<Beats> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.green,
       body: FutureBuilder(
           future: beats,
           builder: (context, snapshot) {
@@ -32,8 +31,17 @@ class _BeatsState extends State<Beats> {
             } else {
               return const Text("No data is available");
             }
-          }),,
+          }),
     );
+  }
+
+  Widget buildBeatsTile(List<BeatsModel.Beats> beats) {
+    return ListView.builder(
+        itemCount: beats.length,
+        itemBuilder: (context, index) {
+          final current = beats[index];
+          return Text(current.title);
+        });
   }
 
   ListView BeatsList() {
