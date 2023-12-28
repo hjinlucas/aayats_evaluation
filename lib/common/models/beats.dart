@@ -1,7 +1,7 @@
 class Beats {
   final String title;
   final int likes;
-  final List<dynamic> artists;
+  final List<String> artists;
   final String key;
   final int bpm;
   final String price;

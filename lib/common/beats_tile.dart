@@ -1,21 +1,22 @@
+import 'package:aayats_evaluation/common/models/beats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'color_constant.dart';
 import 'text_widgets.dart';
 
-Widget beatsListingForm(
-    {required String imageURL,
-    required String heading,
-    numOfLikes,
-    tags,
-    tune,
-    bpm,
-    price}) {
+// {required String imageURL,
+//     required String heading,
+//     numOfLikes,
+//     tags,
+//     tune,
+//     bpm,
+//     price}
+Widget BeatsTile(Beats beats) {
   return Container(
-    width: 370.w,
-    height: 90.h,
-    margin: EdgeInsets.only(bottom: 6.h),
+    width: double.infinity,
+    height: 120.h,
+    // margin: EdgeInsets.only(bottom: 6.h),
     decoration: BoxDecoration(
       gradient: linearGradientPTBwithOpacityAsBg,
     ),
@@ -24,10 +25,10 @@ Widget beatsListingForm(
       children: [
         Container(
           width: 120.w,
-          height: 90.h,
+          height: 120.h,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(imageURL),
+              image: AssetImage(beats.imageUrl),
               fit: BoxFit.cover,
             ),
           ),
@@ -38,16 +39,16 @@ Widget beatsListingForm(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              text16Bold(text: heading, textAlign: TextAlign.start),
+              text16Bold(text: beats.title, textAlign: TextAlign.start),
               SizedBox(height: 6.h),
               text14Normal(
-                text: "$numOfLikes likes",
+                text: "${beats.likes} likes",
                 color: ColorConstant.brandTertiary,
               ),
               SizedBox(height: 2.h),
-              text14NormalSecondary(text: tags),
-              SizedBox(height: 2.h),
-              text14NormalSecondary(text: "$tune $bpm bpm"),
+              text14NormalSecondary(text: beats.artists[0]),
+              // SizedBox(height: 2.h),
+              text14NormalSecondary(text: "${beats.key} ${beats.bpm} bpm"),
             ],
           ),
         ),
@@ -60,7 +61,7 @@ Widget beatsListingForm(
               },
               icon: const Icon(Icons.shopping_cart),
             ),
-            text12Normal(text: price, color: ColorConstant.brandPrimary)
+            text12Normal(text: beats.price, color: ColorConstant.brandPrimary)
           ],
         ),
         IconButton(
