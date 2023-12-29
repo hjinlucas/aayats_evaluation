@@ -30,7 +30,7 @@ Future addBeats(Beats newBeats) async {
         },
         body: newBeats.toJson());
   } catch (error) {
-    print(error);
+    // print(error);
     throw error;
   }
 }

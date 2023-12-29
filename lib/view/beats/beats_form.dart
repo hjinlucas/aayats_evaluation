@@ -8,9 +8,8 @@ import 'package:aayats_evaluation/common/utils/price.dart';
 import 'package:flutter/material.dart';
 
 class BeatsForm extends StatefulWidget {
-  final BuildContext snackBarContext;
   final formKey = GlobalKey<FormState>();
-  BeatsForm({super.key, required this.snackBarContext});
+  BeatsForm({super.key});
 
   @override
   State<BeatsForm> createState() => _BeatsFormState();
@@ -220,7 +219,8 @@ class _BeatsFormState extends State<BeatsForm> {
                                 child: Text(
                                   "Error occurred!",
                                   style: TextStyle(
-                                      color: Colors.red, fontSize: 20),
+                                      color: ColorConstant.accentSecondary,
+                                      fontSize: 20),
                                 ),
                               )
                             : const SizedBox(),
@@ -248,7 +248,7 @@ class _BeatsFormState extends State<BeatsForm> {
                                     isLoading = false;
                                     isError = true;
                                   });
-                                  print(error);
+                                  // print(error);
                                 }
                               }
                             },

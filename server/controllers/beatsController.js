@@ -4,7 +4,6 @@ require("dotenv").config();
 module.exports = {
   getBeats: async (req, res) => {
     try {
-      console.log("getting beats");
       const allBeats = await Beats.find();
       res.status(200).json(allBeats);
     } catch (error) {

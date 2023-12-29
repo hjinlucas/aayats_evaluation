@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:aayats_evaluation/common/utils/price.dart';
 import 'package:aayats_evaluation/view/beats/beats_form.dart';
 import 'package:aayats_evaluation/view/beats/beats_list.dart';
 import 'package:aayats_evaluation/common/constants/color_constant.dart';
@@ -8,8 +5,7 @@ import 'package:aayats_evaluation/common/services/beats_service.dart';
 import 'package:aayats_evaluation/common/widgets/text_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'beats_tile.dart';
-import 'package:aayats_evaluation/common/models/beats.dart' as BeatsModel;
+import 'package:aayats_evaluation/common/models/beats.dart' as beats_model;
 
 class Beats extends StatefulWidget {
   const Beats({super.key});
@@ -18,13 +14,13 @@ class Beats extends StatefulWidget {
 }
 
 class _BeatsState extends State<Beats> {
-  Future<List<BeatsModel.Beats>?> beats = getAllBeats();
+  Future<List<beats_model.Beats>?> beats = getAllBeats();
 
   Future openForm(BuildContext context) async {
-    bool? isUpdate = await showDialog<bool>(
-        context: context,
-        builder: (_context) => BeatsForm(snackBarContext: context));
-    if (isUpdate != null && isUpdate) {
+    bool isUpdate = await showDialog<bool>(
+            context: context, builder: (context) => BeatsForm()) ??
+        false;
+    if (isUpdate) {
       setState(() {
         beats = getAllBeats();
       });
