@@ -1,17 +1,9 @@
 import 'package:aayats_evaluation/common/models/beats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../common/constants/color_constant.dart';
+import '../../common/text_widgets.dart';
 
-import 'color_constant.dart';
-import 'text_widgets.dart';
-
-// {required String imageURL,
-//     required String heading,
-//     numOfLikes,
-//     tags,
-//     tune,
-//     bpm,
-//     price}
 Widget BeatsTile(Beats beats) {
   return Container(
     width: double.infinity,

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:aayats_evaluation/common/models/beats.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,6 +15,20 @@ Future<List<Beats>?> getAllBeats() async {
     List<dynamic> json = jsonDecode(response.body);
     List<Beats>? res = json.map((e) => Beats.fromJson(e)).toList();
     return res;
+  } catch (error) {
+    print(error);
+    throw error;
+  }
+}
+
+Future addBeats(Beats newBeats) async {
+  var url = Uri.http(baseLocalUrlAndroid, 'api/beats/add');
+  try {
+    await http.post(url,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: newBeats.toJson());
   } catch (error) {
     print(error);
     throw error;

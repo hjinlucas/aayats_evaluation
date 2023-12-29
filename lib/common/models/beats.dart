@@ -1,15 +1,15 @@
 class Beats {
-  final String title;
-  final int likes;
-  final List<String> artists;
-  final String key;
-  final int bpm;
-  final String price;
-  final double priceRaw;
-  final String imageUrl;
-  final String producerId;
+  String title;
+  int likes;
+  List<String> artists;
+  String key;
+  int bpm;
+  String price;
+  double priceRaw;
+  String imageUrl;
+  String producerId;
 
-  const Beats(
+  Beats(
       {required this.title,
       required this.likes,
       required this.artists,
@@ -35,4 +35,16 @@ class Beats {
         imageUrl: json["imageUrl"] as String,
         producerId: json["producerId"] as String);
   }
+
+  Map<String, dynamic> toJson() => {
+        'title': title,
+        'likes': likes,
+        'artists': artists,
+        'key': key,
+        'bpm': bpm,
+        'price': price,
+        'priceRaw': priceRaw,
+        'imageUrl': imageUrl,
+        'producerId': producerId
+      };
 }
