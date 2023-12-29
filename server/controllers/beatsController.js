@@ -13,8 +13,17 @@ module.exports = {
   },
 
   createBeats: async (req, res) => {
-    const { title, likes, artists, key, bpm, price, imageUrl, producerId } =
-      req.body;
+    const {
+      title,
+      likes,
+      artists,
+      key,
+      bpm,
+      price,
+      priceRaw,
+      imageUrl,
+      producerId,
+    } = req.body;
     const newBeats = new Beats({
       title,
       likes,
@@ -22,6 +31,7 @@ module.exports = {
       key,
       bpm,
       price,
+      priceRaw,
       imageUrl,
       producerId,
     });

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Beats {
   String title;
   int likes;
@@ -31,12 +33,12 @@ class Beats {
         key: json["key"] as String,
         bpm: json["bpm"] as int,
         price: json["price"] as String,
-        priceRaw: json["priceRaw"] as double,
+        priceRaw: json["priceRaw"].toDouble(),
         imageUrl: json["imageUrl"] as String,
         producerId: json["producerId"] as String);
   }
 
-  Map<String, dynamic> toJson() => {
+  String toJson() => jsonEncode({
         'title': title,
         'likes': likes,
         'artists': artists,
@@ -46,5 +48,5 @@ class Beats {
         'priceRaw': priceRaw,
         'imageUrl': imageUrl,
         'producerId': producerId
-      };
+      });
 }

@@ -1,7 +1,8 @@
+import 'package:aayats_evaluation/common/constants/color_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'color_constant.dart';
+// import '../constants/color_constant.dart';
 
 Widget text24Bold({required String text, bool isGradient = false}) {
   return ShaderMask(

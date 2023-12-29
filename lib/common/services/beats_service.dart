@@ -3,7 +3,7 @@ import 'package:aayats_evaluation/common/models/beats.dart';
 import 'package:http/http.dart' as http;
 
 //Change api path during production
-const String port = "5001";
+const String port = "5001"; //change to 5031 if occupied
 const String baseLocalUrlAndroid = "10.0.2.2:$port";
 const String baseLocalUrlIos = "localhost:$port";
 
@@ -26,7 +26,7 @@ Future addBeats(Beats newBeats) async {
   try {
     await http.post(url,
         headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
+          'Content-Type': 'application/json',
         },
         body: newBeats.toJson());
   } catch (error) {
