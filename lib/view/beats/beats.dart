@@ -21,12 +21,14 @@ class _BeatsState extends State<Beats> {
   Future<List<BeatsModel.Beats>?> beats = getAllBeats();
 
   Future openForm(BuildContext context) async {
-    await showDialog<void>(
+    bool? isUpdate = await showDialog<bool>(
         context: context,
         builder: (_context) => BeatsForm(snackBarContext: context));
-    setState(() {
-      beats = getAllBeats();
-    });
+    if (isUpdate != null && isUpdate) {
+      setState(() {
+        beats = getAllBeats();
+      });
+    }
   }
 
   @override

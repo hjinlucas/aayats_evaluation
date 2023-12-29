@@ -16,7 +16,7 @@ Future<List<Beats>?> getAllBeats() async {
     List<Beats>? res = json.map((e) => Beats.fromJson(e)).toList();
     return res;
   } catch (error) {
-    print(error);
+    // print(error);
     throw error;
   }
 }

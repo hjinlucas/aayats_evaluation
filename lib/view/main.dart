@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const ScreenUtilInit(
-      designSize: const Size(393, 852),
+      designSize: Size(393, 852),
       child: MaterialApp(
         color: Colors.black,
         debugShowCheckedModeBanner: false,

@@ -2,7 +2,7 @@ import 'package:aayats_evaluation/common/models/beats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../common/constants/color_constant.dart';
-import '../../common/text_widgets.dart';
+import '../../common/widgets/text_widgets.dart';
 
 Widget BeatsTile(Beats beats) {
   return Container(
