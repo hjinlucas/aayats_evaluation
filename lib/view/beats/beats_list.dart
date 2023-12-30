@@ -20,7 +20,7 @@ class BeatsList extends StatelessWidget {
           final current = beats[index];
           return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: BeatsTile(current));
+              child: BeatsTile(beats: current));
         });
   }
 }

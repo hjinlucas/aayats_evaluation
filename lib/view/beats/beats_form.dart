@@ -28,7 +28,7 @@ class _BeatsFormState extends State<BeatsForm> {
         bpm: 0,
         price: "",
         priceRaw: 0,
-        imageUrl: "assets/images/beats_temp2.jpg",
+        imageUrl: "assets/images/beats_temp1.jpg",
         producerId: generateRandomHex(24));
 
     return AlertDialog(
