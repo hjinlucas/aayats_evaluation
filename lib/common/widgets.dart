@@ -15,7 +15,7 @@ Widget beatsListingForm(
   return Container(
     width: 370.w,
     height: 90.h,
-    margin: EdgeInsets.only(bottom: 6.h),
+    margin: EdgeInsets.fromLTRB(0, 20, 1, 20),
     decoration: BoxDecoration(
       gradient: linearGradientPTBwithOpacityAsBg,
     ),
