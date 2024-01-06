@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(393, 852),
+    return const ScreenUtilInit(
+      designSize: Size(393, 852),
       child: MaterialApp(
         color: Colors.black,
         debugShowCheckedModeBanner: false,
