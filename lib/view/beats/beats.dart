@@ -71,22 +71,32 @@ class _BeatsState extends State<Beats> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigate to the BeatUploadForm screen when FloatingActionButton is pressed
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const BeatUploadForm()),
+              builder: (context) => BeatUploadForm(refreshBeats: refreshBeats),
+            ),
           );
         },
         child: const Icon(Icons.add),
       ),
     );
   }
+
+  // Method to refresh beats after uploading a new beat
+  void refreshBeats() {
+    setState(() {
+      beats = BeatsApi.getBeats();
+    });
+  }
+
 }
 
 //Created a Form that allows certified users to input the details of the new beat they want to upload.
 class BeatUploadForm extends StatefulWidget {
-  const BeatUploadForm({Key? key}) : super(key: key);
+  final VoidCallback refreshBeats;
+
+  const BeatUploadForm({Key? key, required this.refreshBeats}) : super(key: key);
 
   @override
   _BeatUploadFormState createState() => _BeatUploadFormState();
@@ -101,9 +111,6 @@ class _BeatUploadFormState extends State<BeatUploadForm> {
   final TextEditingController priceController = TextEditingController();
   final TextEditingController imageUrlController = TextEditingController();
 
-  //final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  //final Completer<void> _completer = Completer<void>();
-
   Future<void> uploadBeat() async {
     final String title = titleController.text;
     final int likes = int.parse(likesController.text);
@@ -114,6 +121,8 @@ class _BeatUploadFormState extends State<BeatUploadForm> {
     final String imageUrl = imageUrlController.text;
 
     try {
+      BuildContext originalContext = context; // Store the original context
+
       // Made an HTTP POST request to backend API endpoint for creating a new beat
       final response = await http.post(
         Uri.parse('http://localhost:5001/api/beats/create'),
@@ -132,18 +141,29 @@ class _BeatUploadFormState extends State<BeatUploadForm> {
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // Trigger a rebuild of the main widget
-        setState(() {});
-
-        // Show a success message using ScaffoldMessenger
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Beat Successfully Uploaded'),
+        // Show alert message
+        showDialog(
+          context: originalContext, // Use the original context
+          builder: (context) => AlertDialog(
+            title: Text('Success'),
+            content: Text('Beat successfully uploaded.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the alert dialog
+                  Navigator.pop(originalContext); // Close the upload form screen
+                  // Call the refreshBeats method from the previous screen
+                  widget.refreshBeats();
+                },
+                child: Text('OK'),
+              ),
+            ],
           ),
         );
+
       } else {
         // Handle errors from the API (e.g., show an error message)
-        print('Failed to upload beat. and the statusCode is ${response.statusCode}, Error: ${response.reasonPhrase}');
+        print('Failed to upload beat. Error: ${response.reasonPhrase}');
       }
     } catch (error) {
       // Handle any exceptions that occur during the HTTP request
