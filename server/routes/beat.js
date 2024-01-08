@@ -5,6 +5,4 @@ const beatsController = require("../controllers/beatsController");
 
 router.get("/findAll", beatsController.findAll);
 
-
-
 module.exports = router

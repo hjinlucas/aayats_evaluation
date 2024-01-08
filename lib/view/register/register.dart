@@ -30,7 +30,7 @@ class _registerScreenState extends State<registerScreen> {
       headers: {"content-type":"application/json"},
       body: jsonEncode(registerInformation)
     );
-
+    //If the response status code == 201 (okay) then clear textfields
     if(response.statusCode == 201){
       _emailController.clear();
       _usernameController.clear();
@@ -59,10 +59,11 @@ class _registerScreenState extends State<registerScreen> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
+            //Using my text field widget in common/text_field.dart
             child: MyTextField(
-              controller: _pwdController, 
-              labelText: "Password", 
-              obscureText: false),
+              controller: _pwdController, //Controller for this field
+              labelText: "Password", //What the textbox is labeled
+              obscureText: false), //Whether to obscure user input (with *s)
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

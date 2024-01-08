@@ -19,10 +19,7 @@ import '../../common/widgets.dart';
 class Beats extends StatefulWidget {
   const Beats({
     super.key,
-    //required this.username,
     });
-
-    //final username;
 
   @override
   State<Beats> createState() => _Beats();
@@ -33,11 +30,13 @@ class _Beats extends State<Beats> {
   var listBeats = [];
   List<Widget> listBeatsWidget = [];
   var resJson;
+
+  //When user wants to signout
   void signOut() async {
-    late SharedPreferences sharedPref;
-    sharedPref = await SharedPreferences.getInstance();
-    
+    //Clear out user variables in sharedPref
     sharedPref.clear();
+
+    //If only 1 screen on stack, pushReplace the Signin page instead of just popping
     if (Navigator.of(context).canPop()) {
       Navigator.pop(context);
     }
@@ -50,37 +49,35 @@ class _Beats extends State<Beats> {
   @override
   void initState() {
     super.initState();
+    //Initialize our sharedPref variable for future use
     initPref();
+
+    //Call function to call http query and build listBeats variable
     grabAllBeats();
+
+    //Refresh page to reflect newly built listBeats
     setState(() {});
   }
-  void grabAllBeats() async{
-    print("START GRAB ALL");
-    
+  void grabAllBeats() async{    
     var response = await http.get(Uri.parse('http://192.168.1.238:5001/api/beats/findAll'),
       headers: {"content-type":"application/json"}
     );
+    //If response.statuscode == 200 (valid)
     if (response.statusCode == 200)
     {
       //Response gave back valid data
+      //Decode response into var resJson
       resJson = json.decode(response.body);
-      print("THE FIRST TITLE" + resJson['success'][0]['title'].toString());
-      print("THE SECOND TITLE" + resJson['success'][1]['title'].toString());
+      //We only want the list of beat jsons, put into listBeats
       listBeats = resJson['success'];
-      print("THIS IS THE LIST");
-      print(listBeats);
-      print("LIST LENGTH");
-      print(listBeats.length);
+      //setState to refresh page and correctly display widgets
       setState(() {});
 
     }
     else{
       print("SHOULD NOT BE HERE");
       listBeats = [];
-    }
-
-    print("END GRAB ALL");
-    
+    }    
   }
 
   void initPref() async {
@@ -88,11 +85,13 @@ class _Beats extends State<Beats> {
   }
 
   Widget constructBeats(var index) {
+    //build the string that our tags will be
     String tags = "";
     for(final tag in listBeats[index]['artists'])
     {
       tags = tags + "#"+tag + " "; 
     }
+    //Build the beatsListingForm widget using the listBeats list of JSONs
     return beatsListingForm(
       imageURL: listBeats[index]['imageUrl'],
       heading: listBeats[index]['title'].toString(),
