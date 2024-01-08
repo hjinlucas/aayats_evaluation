@@ -1,11 +1,50 @@
+import 'dart:convert';
+
 import 'package:aayats_evaluation/common/text_widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../common/text_widgets.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../common/widgets.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
-class Beats extends StatelessWidget {
-  const Beats({super.key});
+import '../signin/signin.dart';
+
+import '../../common/widgets.dart';
+class Beats extends StatefulWidget {
+  const Beats({
+    super.key,
+    //required this.username,
+    });
+
+    //final username;
+
+  @override
+  State<Beats> createState() => _Beats();
+}
+
+class _Beats extends State<Beats> {
+  void signOut() async {
+    late SharedPreferences sharedPref;
+    sharedPref = await SharedPreferences.getInstance();
+    
+    sharedPref.clear();
+    if (Navigator.of(context).canPop()) {
+      Navigator.pop(context);
+    }
+    else{
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Signin()));
+    }
+    
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +59,10 @@ class Beats extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: text24Bold(text: "Sample Elements", isGradient: true),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: text24Bold(text: "Welcome!", isGradient: true),
                 ),
                 beatsListingForm(
                     imageURL: "assets/images/beats_temp1.jpg",
@@ -53,6 +96,12 @@ class Beats extends StatelessWidget {
                     tune: "A minor",
                     bpm: "82",
                     price: "\$29.99+"),
+                TextButton(onPressed: () async {
+                  signOut();
+                },
+                 child: const Text(
+                  "Sign Out"
+                 ))
               ],
             ),
           ),
