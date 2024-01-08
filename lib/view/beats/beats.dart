@@ -50,7 +50,7 @@ class Beat {
       'imageUrl': imageURL,
       'title': heading,
       'likes': numOfLikes,
-      'artist': tags.split(' '),
+      'artists': tags.split(' '),
       'key': tune,
       'bpm': bpm,
       'price': price,
@@ -70,6 +70,7 @@ class Beats extends StatefulWidget {
 class BeatsState extends State<Beats> {
   List<Beat> beats = [];
   bool isCertifiedUser = false;
+  String userId = "";
 
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
@@ -213,13 +214,16 @@ class BeatsState extends State<Beats> {
     );
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonResponse = jsonDecode(response.body);
-      return jsonResponse['isCertified'] == true;
+      if (jsonResponse['isCertified']) {
+        userId = jsonResponse['_id'];
+        return true;
+      }
     }
     return false;
   }
 
   Future<void> showUploadForm(BuildContext context) async {
-    Beat newBeat = Beat(imageURL: "", heading: "", numOfLikes: "", tags: "", tune: "", bpm: "", price: "", producerId: "");
+    Beat newBeat = Beat(imageURL: "", heading: "", numOfLikes: "", tags: "", tune: "", bpm: "", price: "", producerId: userId);
 
     await showDialog(
       context: context,
@@ -256,10 +260,6 @@ class BeatsState extends State<Beats> {
                 TextField(
                   onChanged: (value) => newBeat.price = value,
                   decoration: const InputDecoration(labelText: "Price"),
-                ),
-                TextField(
-                  onChanged: (value) => newBeat.producerId = value,
-                  decoration: const InputDecoration(labelText: "Producer ID"),
                 ),
               ],
             ),
