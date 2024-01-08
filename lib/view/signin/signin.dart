@@ -33,7 +33,7 @@ class _Signin extends State<Signin>{
   String mongoUrl = "mongodb://localhost:5001";
   
   final _emailController =
-      TextEditingController(); // Controller for username
+      TextEditingController(); // Controller for email
   final _pwdController = TextEditingController(); // Controller for pwd
 
   @override

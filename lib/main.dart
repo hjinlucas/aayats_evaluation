@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    bool isTokenValid = true;
+    bool isTokenValid = false;
     if (token != ""){
       isTokenValid = JwtDecoder.isExpired(token);
     }

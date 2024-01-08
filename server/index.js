@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
+const beatRoute = require("./routes/beat");
 
 //Schema for user information in DB
 const UserModel = require("./models/User")
@@ -23,6 +24,7 @@ app.use(cors({
 app.use(express.json());
 app.use("/api", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/beats", beatRoute);
 
 app.get('/', (req, res) => {
     res.send("Hello World!")
