@@ -6,7 +6,7 @@ const { verifiedAndAuthorized, verifiedToken } = require("../middleware/verifyTo
 router.get("", beatsController.getBeats);
 
 // Create new beats 
-router.post("/create", verifiedAndAuthorized, beatsController.createBeats);
+router.post("/create", beatsController.createBeats);
 
 // Update beats
 router.put("/:id", verifiedAndAuthorized, beatsController.updateBeats);

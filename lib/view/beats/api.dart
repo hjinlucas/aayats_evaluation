@@ -16,4 +16,21 @@ class BeatsApi {
       throw Exception('Failed to load beats');
     }
   }
+
+  static Future<void> uploadBeat(Map<String, dynamic> beatData) async {
+    final response = await http.post(
+      Uri.parse(baseUrl + '/create'),
+      body: json.encode(beatData),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 201) {
+      // Successful upload, you may want to refresh the beats list
+      // Call the getBeats method or update the UI as needed
+      print("hello Successful upload, you're in api.dart file");
+    } else {
+      throw Exception('Failed to upload beat');
+    }
+  }
+
 }

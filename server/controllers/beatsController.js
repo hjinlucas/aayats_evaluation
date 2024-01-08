@@ -13,7 +13,8 @@ const beatsController = {
 
   // Create new beats
   createBeats: async (req, res) => {
-    const { title, likes, artists, key, bpm, price, imageUrl, producerId } = req.body;
+    const { title, likes, artists, key, bpm, price, imageUrl } = req.body;
+    const producerId = "659a19f63ef66fc1c2676f70";
 
     try {
       const newBeat = await Beats.create({
