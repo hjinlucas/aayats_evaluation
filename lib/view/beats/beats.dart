@@ -1,4 +1,5 @@
 import 'package:aayats_evaluation/common/text_widgets.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -53,6 +54,66 @@ class Beats extends StatelessWidget {
                     tune: "A minor",
                     bpm: "82",
                     price: "\$29.99+"),
+                beatsListingForm(
+                    imageURL: "assets/images/beats_temp4.jpg",
+                    heading: "Lover's Blume",
+                    numOfLikes: "639",
+                    tags: "#Chris Brown # SZA",
+                    tune: "A minor",
+                    bpm: "82",
+                    price: "\$29.99+"),
+                beatsListingForm(
+                    imageURL: "assets/images/beats_temp4.jpg",
+                    heading: "Lover's Blume",
+                    numOfLikes: "639",
+                    tags: "#Chris Brown # SZA",
+                    tune: "A minor",
+                    bpm: "82",
+                    price: "\$29.99+"),
+                beatsListingForm(
+                    imageURL: "assets/images/beats_temp4.jpg",
+                    heading: "Lover's Blume",
+                    numOfLikes: "639",
+                    tags: "#Chris Brown # SZA",
+                    tune: "A minor",
+                    bpm: "82",
+                    price: "\$29.99+"),
+                beatsListingForm(
+                    imageURL: "assets/images/beats_temp4.jpg",
+                    heading: "Lover's Blume",
+                    numOfLikes: "639",
+                    tags: "#Chris Brown # SZA",
+                    tune: "A minor",
+                    bpm: "82",
+                    price: "\$29.99+"),
+                beatsListingForm(
+                    imageURL: "assets/images/beats_temp4.jpg",
+                    heading: "Lover's Blume",
+                    numOfLikes: "639",
+                    tags: "#Chris Brown # SZA",
+                    tune: "A minor",
+                    bpm: "82",
+                    price: "\$29.99+"),
+                const SizedBox(
+                  height: 25,
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Add Beat'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // Trigger an error
+                    if (kDebugMode) {
+                      print('A simulated error go to error handler screen');
+                    }
+                    //********************************
+                    // Error objects could be created
+                    // ********************************/
+                    throw Exception('Simulated error in Beats screen');
+                  },
+                  child: const Text('Testing a Global Error'),
+                ),
               ],
             ),
           ),
