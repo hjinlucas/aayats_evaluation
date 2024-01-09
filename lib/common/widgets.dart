@@ -14,11 +14,12 @@ Widget beatsListingForm(
     price}) {
   return Container(
     width: 370.w,
-    height: 90.h,
+    //height: 90.h,
     margin: EdgeInsets.only(bottom: 6.h),
     decoration: BoxDecoration(
       gradient: linearGradientPTBwithOpacityAsBg,
     ),
+    //color: Colors.amber,
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [

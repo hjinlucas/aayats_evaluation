@@ -12,4 +12,6 @@ const UserSchema = new mongoose.Schema(
     },  {timestamps: true}
 )
 
+//findByIdAndUpdate
+
 module.exports = mongoose.model("User", UserSchema)

@@ -1,3 +1,9 @@
+# Env file
+*.env
+
+# Npm node_modules
+server/node_modules
+
 # Miscellaneous
 *.class
 *.log
