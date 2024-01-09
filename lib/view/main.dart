@@ -1,3 +1,4 @@
+import 'package:aayats_evaluation/global_error_handler/global_error_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,12 +14,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(393, 852),
+    return const ScreenUtilInit(
+      designSize: Size(393, 852),
       child: MaterialApp(
         color: Colors.black,
         debugShowCheckedModeBanner: false,
-        home: Beats(),
+        // Centralized error responses
+        home: GlobalErrorHandler(
+          child: Beats(),
+        ),
       ),
     );
   }
