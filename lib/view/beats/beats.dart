@@ -1,5 +1,6 @@
 import 'package:aayats_evaluation/common/text_widgets.dart';
 import 'package:aayats_evaluation/services/data/data_test.dart';
+import 'package:aayats_evaluation/view/widgets/toast/toast.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,7 +39,9 @@ class Beats extends StatelessWidget {
             height: 15,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.showToast('This is a test', style: const TextStyle());
+            },
             child: const Text('Add Beat'),
           ),
           ElevatedButton(
