@@ -29,11 +29,13 @@ class MyApp extends StatelessWidget {
         // ***********************************
         initialRoute: 'login',
         routes: {
-          'login': (_) => LoginScreen(),
-          'home': (_) => Beats(
-                beatList: DataTest.beatsList,
+          'login': (_) => GlobalErrorHandler(child: LoginScreen()),
+          'home': (_) => GlobalErrorHandler(
+                child: Beats(
+                  beatList: DataTest.beatsList,
+                ),
               ),
-          'add': (_) => AddBeatScreen(),
+          'add': (_) => GlobalErrorHandler(child: AddBeatScreen()),
         },
         // Centralized error responses
         // home: GlobalErrorHandler(
