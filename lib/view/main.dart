@@ -1,9 +1,11 @@
 import 'package:aayats_evaluation/global_error_handler/global_error_handler.dart';
 import 'package:aayats_evaluation/services/data/data_test.dart';
+import 'package:aayats_evaluation/view/screens/add_beat/add_beat.dart';
+import 'package:aayats_evaluation/view/screens/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'beats/beats.dart';
+import 'screens/beats/beats.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +28,12 @@ class MyApp extends StatelessWidget {
             beatList: DataTest.beatsList,
           ),
         ),
+        // home: GlobalErrorHandler(
+        //   child: LoginScreen(),
+        // ),
+        // home: GlobalErrorHandler(
+        //   child: AddBeatScreen(),
+        // ),
       ),
     );
   }

@@ -1,11 +1,12 @@
 import 'package:aayats_evaluation/common/text_widgets.dart';
 import 'package:aayats_evaluation/services/data/data_test.dart';
+import 'package:aayats_evaluation/view/screens/base_screen.dart';
 import 'package:aayats_evaluation/view/widgets/toast/toast.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../common/widgets.dart';
+import '../../../common/widgets.dart';
 
 class Beats extends StatelessWidget {
   const Beats({super.key, this.beatList});
@@ -14,9 +15,8 @@ class Beats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Column(
+    return BaseScreen(
+      widget: Column(
         children: [
           Flexible(
             child: ListView.builder(
