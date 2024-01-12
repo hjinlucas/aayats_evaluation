@@ -10,6 +10,7 @@ class AddBeatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
+      hasAppBar: true,
       widget: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Form(

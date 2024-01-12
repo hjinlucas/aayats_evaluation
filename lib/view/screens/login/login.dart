@@ -1,5 +1,6 @@
 import 'package:aayats_evaluation/view/screens/base_screen.dart';
 import 'package:aayats_evaluation/view/widgets/text_field/text_field.dart';
+import 'package:aayats_evaluation/view/widgets/toast/toast.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
+      hasAppBar: false,
       widget: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Stack(
@@ -109,10 +111,13 @@ class _LoginScreenState extends State<LoginScreen> {
             if (kDebugMode) {
               print('Field empty');
             }
+            context.showToast('Fields must not be empty.. try again!',
+                style: const TextStyle());
           } else {
             if (kDebugMode) {
               print('Connecting with services');
             }
+            Navigator.pushReplacementNamed(context, 'home');
           }
         },
         child: const Text(

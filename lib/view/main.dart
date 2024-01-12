@@ -22,12 +22,25 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         color: Colors.black,
         debugShowCheckedModeBanner: false,
+        // ***********************************
+        // Basic route navigation
+        // We can separate these routes in a different folder/file in order
+        // to handle different screens properly, here only 3 screens
+        // ***********************************
+        initialRoute: 'login',
+        routes: {
+          'login': (_) => LoginScreen(),
+          'home': (_) => Beats(
+                beatList: DataTest.beatsList,
+              ),
+          'add': (_) => AddBeatScreen(),
+        },
         // Centralized error responses
-        home: GlobalErrorHandler(
-          child: Beats(
-            beatList: DataTest.beatsList,
-          ),
-        ),
+        // home: GlobalErrorHandler(
+        //   child: Beats(
+        //     beatList: DataTest.beatsList,
+        //   ),
+        // ),
         // home: GlobalErrorHandler(
         //   child: LoginScreen(),
         // ),

@@ -16,6 +16,7 @@ class Beats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
+      hasAppBar: true,
       widget: Column(
         children: [
           Flexible(
@@ -40,7 +41,7 @@ class Beats extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              context.showToast('This is a test', style: const TextStyle());
+              Navigator.pushNamed(context, 'add');
             },
             child: const Text('Add Beat'),
           ),
