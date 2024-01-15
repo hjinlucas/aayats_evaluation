@@ -1,3 +1,5 @@
+import 'package:aayats_evaluation/env/env.dart';
+import 'package:aayats_evaluation/services/state_management/app_state.dart';
 import 'package:aayats_evaluation/view/screens/base_screen.dart';
 import 'package:aayats_evaluation/view/widgets/text_field/text_field.dart';
 import 'package:aayats_evaluation/view/widgets/toast/toast.dart';
@@ -12,8 +14,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController usernameController = new TextEditingController();
-  TextEditingController passwordController = new TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   void didChangeDependencies() {
@@ -31,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               height: double.infinity,
               child: SingleChildScrollView(
+                // ignore: prefer_const_constructors
                 physics: AlwaysScrollableScrollPhysics(),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 40.0,
@@ -111,11 +114,19 @@ class _LoginScreenState extends State<LoginScreen> {
             if (kDebugMode) {
               print('Field empty');
             }
-            context.showToast('Fields must not be empty.. try again!',
-                style: const TextStyle());
+            context.showToast(
+              'Fields must not be empty.. try again!',
+              style: const TextStyle(),
+              alignment: Alignment.topCenter,
+            );
           } else {
             if (kDebugMode) {
               print('Connecting with services');
+            }
+            // Only one user has permission - testing purposes - connecting with services
+            if (usernameController.text == Env.username &&
+                passwordController.text == Env.password) {
+              stateManagement.changeAddBeatPermission();
             }
             Navigator.pushReplacementNamed(context, 'home');
           }

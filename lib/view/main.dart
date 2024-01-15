@@ -1,5 +1,4 @@
 import 'package:aayats_evaluation/global_error_handler/global_error_handler.dart';
-import 'package:aayats_evaluation/services/data/data_test.dart';
 import 'package:aayats_evaluation/view/screens/add_beat/add_beat.dart';
 import 'package:aayats_evaluation/view/screens/login/login.dart';
 import 'package:flutter/material.dart';
@@ -30,10 +29,8 @@ class MyApp extends StatelessWidget {
         initialRoute: 'login',
         routes: {
           'login': (_) => GlobalErrorHandler(child: LoginScreen()),
-          'home': (_) => GlobalErrorHandler(
-                child: Beats(
-                  beatList: DataTest.beatsList,
-                ),
+          'home': (_) => const GlobalErrorHandler(
+                child: Beats(),
               ),
           'add': (_) => GlobalErrorHandler(child: AddBeatScreen()),
         },
